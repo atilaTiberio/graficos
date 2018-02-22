@@ -30,6 +30,12 @@
     <ClInclude Include="CDXManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CParticleDynamics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CVectorReduction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +45,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CDXManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CParticleDynamics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CVectorReduction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
