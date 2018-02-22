@@ -13,7 +13,6 @@ cbuffer PARAMS
 };
 
 
-
 //Recursos Locales (información que compartirán los hilos de éste grupo)
 //<declarar aquí recursos locales>
 
