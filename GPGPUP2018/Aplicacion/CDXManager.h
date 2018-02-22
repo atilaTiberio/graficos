@@ -34,7 +34,7 @@ public:
 	ID3D11DeviceContext* GetContext(){return m_pContext; }
 	CDXManager();
 	~CDXManager();
-	bool Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy);
+	bool Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy, bool b_UseSoftware=true);
 	ID3D11ComputeShader* CompileCS(const wchar_t* pwszFileName, const char* pszEntryPoint);
 	void LoadAdaptersToListBox(HWND hDlg);
 	void calculaLimitesJulia(struct PARAMS &params);

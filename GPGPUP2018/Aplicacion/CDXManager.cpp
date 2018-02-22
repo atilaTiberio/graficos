@@ -47,7 +47,7 @@ CDXManager::~CDXManager()
 }
 
 
-bool CDXManager::Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy)
+bool CDXManager::Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy,bool b_UseSoftware)
 {
 	DXGI_SWAP_CHAIN_DESC dscd;
 	memset(&dscd, 0, sizeof(dscd));
@@ -64,15 +64,24 @@ bool CDXManager::Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy)
 		DXGI_USAGE_RENDER_TARGET_OUTPUT |
 		DXGI_USAGE_UNORDERED_ACCESS;
 	dscd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
-	dscd.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+	dscd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 	dscd.SampleDesc.Count = 1;
 	dscd.SampleDesc.Quality = 0;
 	dscd.Windowed = true;
 	D3D_FEATURE_LEVEL Requested=D3D_FEATURE_LEVEL_11_0, Serviced;
-	HRESULT hr=D3D11CreateDeviceAndSwapChain(pAdapter,
-		D3D_DRIVER_TYPE_UNKNOWN, NULL, 0, &Requested, 1,
-		D3D11_SDK_VERSION,&dscd ,
-		&m_pSwapChain, &m_pDevice, &Serviced, &m_pContext);
+	HRESULT hr;
+	if (!b_UseSoftware) {
+		hr = D3D11CreateDeviceAndSwapChain(pAdapter,
+			D3D_DRIVER_TYPE_UNKNOWN, NULL, 0, &Requested, 1,
+			D3D11_SDK_VERSION, &dscd,
+			&m_pSwapChain, &m_pDevice, &Serviced, &m_pContext);
+	}
+	else {
+		hr = D3D11CreateDeviceAndSwapChain(NULL,
+			D3D_DRIVER_TYPE_WARP, NULL, 0, &Requested, 1,
+			D3D11_SDK_VERSION, &dscd,
+			&m_pSwapChain, &m_pDevice, &Serviced, &m_pContext);
+	}
 	return SUCCEEDED(hr);
 }
 #include <d3dcompiler.h>
