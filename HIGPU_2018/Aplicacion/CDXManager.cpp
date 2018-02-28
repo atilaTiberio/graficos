@@ -1,7 +1,10 @@
 #include "stdafx.h"
 #include "CDXManager.h"
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/CDXManager.cpp
 #include "resource.h"
 #include <d3dcompiler.h>
+=======
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/CDXManager.cpp
 
 
 IDXGIAdapter * CDXManager::EnumAndChooseAdapter(HWND hWnd)
@@ -48,7 +51,11 @@ CDXManager::~CDXManager()
 }
 
 
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/CDXManager.cpp
 bool CDXManager::Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy,bool b_UseSoftware )
+=======
+bool CDXManager::Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy, bool b_UseSoftware)
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/CDXManager.cpp
 {
 	DXGI_SWAP_CHAIN_DESC dscd;
 	memset(&dscd, 0, sizeof(dscd));
@@ -129,37 +136,26 @@ ID3D11ComputeShader* CDXManager::CompileCS(const wchar_t * pwszFileName, const c
 	return nullptr;
 }
 
-void CDXManager::LoadAdaptersToListBox(HWND hDlg)
+void CDXManager::Upload(void* pData, size_t uSize, ID3D11Buffer* pDest)
 {
-	IDXGIFactory* pDXGIFactory = nullptr;
-	CreateDXGIFactory(IID_IDXGIFactory, (void**)&pDXGIFactory);
-	IDXGIAdapter* pDXGIAdapter = nullptr;
-	unsigned long iAdapter = 0;
-	HWND hwndList = GetDlgItem(hDlg, IDC_LIST_DEVICES);
-
-	while (1)
-	{
-		DXGI_ADAPTER_DESC dad;
-		pDXGIFactory->EnumAdapters(iAdapter, &pDXGIAdapter);
-
-		if (!pDXGIAdapter) break;
-
-		pDXGIAdapter->GetDesc(&dad);
-		wchar_t szMessage[1024];
-
-		wsprintf(szMessage, L"%s\r\n", dad.Description);
-
-		int pos = (int)SendMessage(hwndList, LB_ADDSTRING, 0, (LPARAM)szMessage);
-		SendMessage(hwndList, LB_SETITEMDATA, pos, (LPARAM)pDXGIAdapter);
-
-		iAdapter++;
-
-	}
-	SetFocus(hwndList);
+	ID3D11Buffer* pStaging=nullptr;
+	D3D11_BUFFER_DESC dbd;
+	pDest->GetDesc(&dbd);
+	dbd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	dbd.Usage = D3D11_USAGE_STAGING;
+	dbd.BindFlags = 0;
+	m_pDevice->CreateBuffer(&dbd, NULL, &pStaging);
+	D3D11_MAPPED_SUBRESOURCE dms;
+	m_pContext->Map(pStaging, 0, D3D11_MAP_WRITE, 0, &dms);
+	memcpy(dms.pData, pData, uSize);
+	m_pContext->Unmap(pStaging, 0);
+	m_pContext->CopyResource(pDest, pStaging);
+	pStaging->Release();
 }
-
-void CDXManager::calculaLimitesJulia(PARAMS &params)
+void CDXManager::Download(void* pData, size_t uSize,
+	ID3D11Buffer* pSource)
 {
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/CDXManager.cpp
 
 
 	params.minReal = (-1.0f*params.zoom) + params.x_centro; //centro en X (0,0)
@@ -225,3 +221,20 @@ void CDXManager::Download(void* pData, size_t uSize,
 	pStaging->Release();
 }
 
+=======
+	ID3D11Buffer* pStaging = nullptr;
+	D3D11_BUFFER_DESC dbd;
+	pSource->GetDesc(&dbd);
+	dbd.CPUAccessFlags = D3D11_CPU_ACCESS_READ;
+	dbd.Usage = D3D11_USAGE_STAGING;
+	dbd.BindFlags = 0;
+	m_pDevice->CreateBuffer(&dbd, NULL, &pStaging);
+	m_pContext->CopyResource(pStaging, pSource);
+	D3D11_MAPPED_SUBRESOURCE dms;
+	m_pContext->Map(pStaging, 0, D3D11_MAP_READ, 0, &dms);
+	memcpy(pData,dms.pData, uSize);
+	m_pContext->Unmap(pStaging, 0);
+	pStaging->Release();
+}
+
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/CDXManager.cpp

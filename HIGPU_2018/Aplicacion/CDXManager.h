@@ -2,6 +2,7 @@
 #pragma once
 #include <dxgi.h>
 #include <d3d11.h>
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/CDXManager.h
 
 struct PARAMS
 {
@@ -20,6 +21,8 @@ struct PARAMS
 
 };
 
+=======
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/CDXManager.h
 class CDXManager
 {
 protected:
@@ -35,11 +38,16 @@ public:
 	~CDXManager();
 	bool Initialize(HWND hWnd, IDXGIAdapter* pAdapter, int sx, int sy, bool b_UseSoftware = true);
 	ID3D11ComputeShader* CompileCS(const wchar_t* pwszFileName, const char* pszEntryPoint);
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/CDXManager.h
 	void LoadAdaptersToListBox(HWND hDlg);
 	void calculaLimitesJulia(struct PARAMS &params);
 	void Upload(void* pData, size_t uSize, ID3D11Buffer* pDest);
 	void Download(void* pData, size_t uSize, ID3D11Buffer* pSource);
 	
 	
+=======
+	void Upload(void* pData, size_t uSize, ID3D11Buffer* pDest);
+	void Download(void* pData, size_t uSize, ID3D11Buffer* pSource);
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/CDXManager.h
 };
 

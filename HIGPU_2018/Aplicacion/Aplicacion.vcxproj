@@ -152,7 +152,10 @@
     <ClInclude Include="CDXManager.h" />
     <ClInclude Include="CParticleDynamics.h" />
     <ClInclude Include="CVectorReduction.h" />
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/Aplicacion.vcxproj
     <ClInclude Include="PrimerExamen.h" />
+=======
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/Aplicacion.vcxproj
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -162,7 +165,10 @@
     <ClCompile Include="CDXManager.cpp" />
     <ClCompile Include="CParticleDynamics.cpp" />
     <ClCompile Include="CVectorReduction.cpp" />
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/Aplicacion.vcxproj
     <ClCompile Include="PrimerExamen.cpp" />
+=======
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/Aplicacion.vcxproj
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

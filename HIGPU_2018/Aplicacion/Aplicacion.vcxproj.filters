@@ -36,9 +36,12 @@
     <ClInclude Include="CVectorReduction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/Aplicacion.vcxproj.filters
     <ClInclude Include="PrimerExamen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/Aplicacion.vcxproj.filters
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -56,9 +59,12 @@
     <ClCompile Include="CVectorReduction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD:HIGPU_2018/Aplicacion/Aplicacion.vcxproj.filters
     <ClCompile Include="PrimerExamen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> 9c3fb3a02e841561d39a30164f24fd57d3350d58:GPGPUP2018/Aplicacion/Aplicacion.vcxproj.filters
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Aplicacion.rc">
